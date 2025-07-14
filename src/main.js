@@ -1,5 +1,6 @@
-document.querySelector("#app").innerHTML = `
-  <div>
-    <h1>Hello Vite!</h1>
-  </div>
-`;
+import { createNavbar } from "./components/navbar/navbar";
+
+const app = document.getElementById("app");
+const navbar = createNavbar();
+
+app.prepend(navbar);
