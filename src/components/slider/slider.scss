@@ -1,0 +1,14 @@
+.swiper {
+  width: 100%;
+  aspect-ratio: 16 / 5; // ~560px при 1920px ширины
+  max-height: 560px;
+
+  .swiper-slide {
+    background: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+  }
+}

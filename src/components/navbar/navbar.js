@@ -11,6 +11,12 @@ export function createNavbar() {
 
   nav.innerHTML = `
     <div class="navbar__container">
+      <button class="navbar__burger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <div class="navbar__logo">
         <img src="${logo}" alt="Colors logo">
       </div>
@@ -30,9 +36,9 @@ export function createNavbar() {
         </div>
 
         <div class="navbar__icons">
-          <a href="#"><img src="${search}" alt="Search"></a>
-          <a href="#"><img src="${profile}" alt="Profile"></a>
-          <a href="#"><img src="${heart}" alt="Favorites"></a>
+          <a href="#" class="navbar__icon-search"><img src="${search}" alt="Search"></a>
+          <a href="#" class="navbar__icon-profile"><img src="${profile}" alt="Profile"></a>
+          <a href="#" class="navbar__icon-heart"><img src="${heart}" alt="Favorites"></a>
           <div class="navbar__icons__cart">
             <img src="${cart}" alt="Cart">
             <span>4</span>
@@ -41,6 +47,21 @@ export function createNavbar() {
       </div>
     </div>
   `;
+
+  const burger = nav.querySelector(".navbar__burger");
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("navbar--menu-open");
+    burger.classList.toggle("navbar__burger--active");
+  });
+
+  const menuLinks = nav.querySelectorAll(".navbar__menu a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("navbar--menu-open");
+      burger.classList.remove("navbar__burger--active");
+    });
+  });
 
   return nav;
 }
