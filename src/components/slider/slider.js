@@ -4,17 +4,32 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./slider.scss";
+import { getProducts } from "../api/products";
 
-export function createSlider() {
+export async function createSlider() {
   const container = document.createElement("div");
   container.className = "swiper mySwiper";
+
+  let products = [];
+  try {
+    products = await getProducts();
+  } catch (error) {
+    console.error("Ошибка загрузки продуктов:", error);
+    return document.createTextNode("Не удалось загрузить слайдер");
+  }
+
+  const limitedProducts = products.slice(0, 5);
+
+  const slidesHTML = limitedProducts
+    .map(
+      (product) =>
+        `<div class="swiper-slide"><img src="${product.image}" alt="${product.title}" /></div>`
+    )
+    .join("");
+
   container.innerHTML = `
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
-      <div class="swiper-slide">Slide 5</div>
+      ${slidesHTML}
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -22,6 +37,8 @@ export function createSlider() {
   `;
 
   setTimeout(() => {
+    const canLoop = limitedProducts.length >= 3;
+
     new Swiper(".mySwiper", {
       modules: [Navigation, Pagination, Mousewheel, Keyboard],
       cssMode: true,
@@ -34,7 +51,7 @@ export function createSlider() {
       },
       mousewheel: true,
       keyboard: true,
-      loop: true,
+      loop: canLoop,
     });
   }, 0);
 
