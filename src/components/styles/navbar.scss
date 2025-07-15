@@ -80,6 +80,11 @@
     font-weight: 600;
     color: var(--Black, #1f2020);
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     button {
       border: none;
       background: none;

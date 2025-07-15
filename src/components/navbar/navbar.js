@@ -1,4 +1,4 @@
-import "./navbar.scss";
+import "../styles/navbar.scss";
 import logo from "../assets/colors.svg";
 import search from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";
@@ -31,7 +31,7 @@ export function createNavbar() {
 
       <div class="navbar__right">
         <div class="navbar__connection">
-          +7 (495) 221-77-69
+          <a href="tel:+74952217769">+7 (495) 221-77-69</a>
           <button>Заказать звонок</button>
         </div>
 
