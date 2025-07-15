@@ -6,8 +6,11 @@ import "swiper/css/pagination";
 import "./slider.scss";
 import { getProducts } from "../api/products";
 
+let items = [];
+let container = null;
+
 export async function createSlider() {
-  const container = document.createElement("div");
+  container = document.createElement("div");
   container.className = "swiper mySwiper";
 
   let products = [];
@@ -18,9 +21,9 @@ export async function createSlider() {
     return document.createTextNode("Не удалось загрузить слайдер");
   }
 
-  const limitedProducts = products.slice(0, 5);
+  items = products.slice(0, 5);
 
-  const slidesHTML = limitedProducts
+  const slidesHTML = items
     .map(
       (product) =>
         `<div class="swiper-slide"><img src="${product.image}" alt="${product.title}" /></div>`
@@ -36,24 +39,24 @@ export async function createSlider() {
     <div class="swiper-pagination"></div>
   `;
 
-  setTimeout(() => {
-    const canLoop = limitedProducts.length >= 3;
-
-    new Swiper(".mySwiper", {
-      modules: [Navigation, Pagination, Mousewheel, Keyboard],
-      cssMode: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-      mousewheel: true,
-      keyboard: true,
-      loop: canLoop,
-    });
-  }, 0);
-
   return container;
+}
+
+export function initSlider() {
+  const canLoop = items.length >= 3;
+
+  new Swiper(".mySwiper", {
+    modules: [Navigation, Pagination, Mousewheel, Keyboard],
+    cssMode: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    mousewheel: true,
+    keyboard: true,
+    loop: canLoop,
+  });
 }

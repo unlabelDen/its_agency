@@ -37,6 +37,7 @@ export const cardsTemplate = `
   <div class="cards__content">
     <div class="cards__header">
       <div class="cards__quantity">Загрузка товаров...</div>
+      <button class="cards__toggle">Фильтры</button>
       <div class="sort">
         <button class="sort__toggle">Сначала дорогие ▼</button>
         <ul class="sort__list sort__list--hidden">

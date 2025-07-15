@@ -13,6 +13,9 @@ export async function createCards() {
 
   const list = cards.querySelector(".cards__list");
   const quantity = cards.querySelector(".cards__quantity");
+  const filters = cards.querySelector(".cards__filters");
+  const toggleBtn = cards.querySelector(".cards__toggle");
+  const overlay = cards.querySelector(".overlay");
 
   const productRenderer = new ProductRenderer(list);
   let products = [];
@@ -40,18 +43,30 @@ export async function createCards() {
       updateProductDisplay();
     });
 
-    // Инициализируем dropdown с callback для сортировки
     const dropdown = new Dropdown(cards, (sortCriterion) => {
       currentSortCriterion = sortCriterion;
       updateProductDisplay();
     });
 
-    // Первоначальный рендер
     productRenderer.render(products);
   } catch (error) {
     quantity.textContent = "Ошибка загрузки товаров";
     productRenderer.showError("Не удалось загрузить товары. Попробуйте позже.");
     console.error("Ошибка при загрузке товаров:", error);
+  }
+
+  if (toggleBtn && filters && overlay) {
+    toggleBtn.addEventListener("click", () => {
+      const isVisible = filters.classList.contains("cards__filters--visible");
+
+      filters.classList.toggle("cards__filters--visible");
+      overlay.classList.toggle("overlay--hidden", isVisible);
+    });
+
+    overlay.addEventListener("click", () => {
+      filters.classList.remove("cards__filters--visible");
+      overlay.classList.add("overlay--hidden");
+    });
   }
 
   return cards;

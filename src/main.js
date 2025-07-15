@@ -1,6 +1,6 @@
 import "./components/styles/global.scss";
 import { createNavbar } from "./components/navbar/navbar";
-import { createSlider } from "./components/slider/slider";
+import { createSlider, initSlider } from "./components/slider/slider";
 import { createCards } from "./components/cards/cards";
 import { createFooter } from "./components/footer/footer";
 
@@ -16,6 +16,8 @@ async function main() {
   app.prepend(navbar);
   app.append(cards);
   app.append(footer);
+
+  initSlider();
 }
 
 main();
