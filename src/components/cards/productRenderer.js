@@ -7,7 +7,6 @@ export class ProductRenderer {
 
   render(products) {
     this.container.innerHTML = "";
-
     products.forEach((product) => {
       const card = this.createCard(product);
       this.container.appendChild(card);
@@ -32,7 +31,7 @@ export class ProductRenderer {
 
     const button = card.querySelector(".card__button");
     button.addEventListener("click", () => {
-      addToCart();
+      addToCart(product);
     });
 
     return card;

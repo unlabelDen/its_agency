@@ -1,5 +1,5 @@
 import "../styles/navbar.scss";
-import { getCartCount, subscribe } from "../cart/cart";
+import { getCartItems, subscribe } from "../cart/cart"; // ✅ заменили getCartCount
 import logo from "../assets/colors.svg";
 import search from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";
@@ -42,7 +42,10 @@ export function createNavbar() {
           <a href="#" class="navbar__icon-heart"><img src="${heart}" alt="Favorites"></a>
           <div class="navbar__icons__cart">
             <img src="${cart}" alt="Cart">
-            <span class="navbar__cart-count">${getCartCount()}</span>
+            <span class="navbar__cart-count">${getCartItems().reduce(
+              (acc, item) => acc + item.quantity,
+              0
+            )}</span>
           </div>
         </div>
       </div>
@@ -50,7 +53,9 @@ export function createNavbar() {
   `;
 
   const cartCountElement = nav.querySelector(".navbar__cart-count");
-  subscribe((count) => {
+
+  subscribe((items) => {
+    const count = items.reduce((acc, item) => acc + item.quantity, 0);
     cartCountElement.textContent = count;
   });
 
