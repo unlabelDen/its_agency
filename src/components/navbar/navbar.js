@@ -74,5 +74,11 @@ export function createNavbar() {
     });
   });
 
+  const logoElement = nav.querySelector(".navbar__logo");
+  logoElement.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   return nav;
 }

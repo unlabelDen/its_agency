@@ -5,6 +5,7 @@ import { ProductSorter } from "./productSorter";
 import { ProductRenderer } from "./productRenderer";
 import { ProductFilter } from "./productFilter";
 import { cardsTemplate } from "./cardsTemplate";
+import { getWordForm } from "../cart/cartUtils";
 
 export async function createCards() {
   const cards = document.createElement("section");
@@ -31,12 +32,14 @@ export async function createCards() {
     }
 
     productRenderer.render(productsToShow);
-    quantity.textContent = `${productsToShow.length} товаров`;
+    quantity.textContent = `${productsToShow.length} ${getWordForm(
+      productsToShow.length
+    )}`;
   };
 
   try {
     products = await getProducts();
-    quantity.textContent = `${products.length} товаров`;
+    quantity.textContent = `${products.length} ${getWordForm(products.length)}`;
 
     const productFilter = new ProductFilter(cards, (activeFilters) => {
       filteredProducts = ProductFilter.applyFilters(products, activeFilters);
