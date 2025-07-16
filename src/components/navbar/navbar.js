@@ -1,5 +1,5 @@
 import "../styles/navbar.scss";
-import { getCartItems, subscribe } from "../cart/cart";
+import { getCartItems, subscribe } from "../cart/cartStore";
 import logo from "../assets/colors.svg";
 import search from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";

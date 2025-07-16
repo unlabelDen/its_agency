@@ -1,4 +1,4 @@
-import { addToCart } from "../cart/cart";
+import { addToCart } from "../cart/cartStore";
 
 export class ProductRenderer {
   constructor(container) {
