@@ -1,6 +1,7 @@
 import "../styles/cart.scss";
 
-let cartItems = [];
+const savedCart = localStorage.getItem("cart");
+let cartItems = savedCart ? JSON.parse(savedCart) : [];
 const subscribers = [];
 
 export function addToCart(product) {
@@ -41,6 +42,7 @@ export function getCartItems() {
 
 export function clearCart() {
   cartItems = [];
+  localStorage.removeItem("cart");
   notifySubscribers();
 }
 
@@ -49,6 +51,8 @@ export function subscribe(callback) {
 }
 
 function notifySubscribers() {
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+
   subscribers.forEach((cb) => cb(cartItems));
 }
 
@@ -212,6 +216,7 @@ export function createCart() {
   });
 
   subscribe(renderCart);
+  renderCart();
 
   return {
     element: modal,

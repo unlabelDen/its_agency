@@ -1,19 +1,19 @@
 .sort {
   position: relative;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1rem;
 
   &__toggle {
     cursor: pointer;
     background: transparent;
-    padding: 8px 0 8px 16px;
+    padding: 0.5rem 0 0.5rem 1rem;
     color: var(--Black-Text, #1f2020);
     text-align: right;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: 0.72px;
+    letter-spacing: 0.045rem;
     text-transform: uppercase;
     transition: border-color 0.2s;
     border: none;
@@ -26,7 +26,7 @@
     background: #fff;
     z-index: 10;
     list-style: none;
-    min-width: 220px;
+    min-width: 13.75rem;
     overflow: hidden;
     transition: opacity 0.2s ease;
 
@@ -36,13 +36,13 @@
   }
 
   &__item {
-    padding: 16px;
+    padding: 1rem;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: 0.72px;
+    letter-spacing: 0.045rem;
     text-transform: uppercase;
     transition: background 0.2s;
 

@@ -4,7 +4,7 @@
   margin: 0;
 
   &__item {
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
     cursor: pointer;
   }
 
@@ -12,7 +12,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     cursor: pointer;
     user-select: none;
   }
@@ -25,19 +25,19 @@
 
   &__slider {
     position: relative;
-    width: 44px;
-    height: 24px;
+    width: 2.75rem;
+    height: 1.5rem;
     background-color: #ccc;
-    border-radius: 34px;
+    border-radius: 2.125rem;
     transition: background-color 0.3s;
 
     &::before {
       content: "";
       position: absolute;
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
+      height: 1.125rem;
+      width: 1.125rem;
+      left: 0.1875rem;
+      bottom: 0.1875rem;
       background-color: white;
       border-radius: 50%;
       transition: transform 0.3s;
@@ -49,14 +49,14 @@
   }
 
   &__switch input:checked + &__slider::before {
-    transform: translateX(20px);
+    transform: translateX(1.25rem);
   }
 
   &__label {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--Black-Text, #1f2020);
     text-transform: uppercase;
-    letter-spacing: 0.72px;
+    letter-spacing: 0.045rem;
   }
 }
