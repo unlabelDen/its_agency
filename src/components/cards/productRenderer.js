@@ -1,3 +1,5 @@
+import { addToCart } from "../cart/cart";
+
 export class ProductRenderer {
   constructor(container) {
     this.container = container;
@@ -27,6 +29,12 @@ export class ProductRenderer {
         </div>
       </div>
     `;
+
+    const button = card.querySelector(".card__button");
+    button.addEventListener("click", () => {
+      addToCart();
+    });
+
     return card;
   }
 

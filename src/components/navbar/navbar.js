@@ -1,4 +1,5 @@
 import "../styles/navbar.scss";
+import { getCartCount, subscribe } from "../cart/cart";
 import logo from "../assets/colors.svg";
 import search from "../assets/icons/search.svg";
 import profile from "../assets/icons/profile.svg";
@@ -41,12 +42,17 @@ export function createNavbar() {
           <a href="#" class="navbar__icon-heart"><img src="${heart}" alt="Favorites"></a>
           <div class="navbar__icons__cart">
             <img src="${cart}" alt="Cart">
-            <span>4</span>
+            <span class="navbar__cart-count">${getCartCount()}</span>
           </div>
         </div>
       </div>
     </div>
   `;
+
+  const cartCountElement = nav.querySelector(".navbar__cart-count");
+  subscribe((count) => {
+    cartCountElement.textContent = count;
+  });
 
   const burger = nav.querySelector(".navbar__burger");
 
