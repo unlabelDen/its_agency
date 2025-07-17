@@ -1,4 +1,3 @@
-// cartStore.js
 let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 const subscribers = [];
 

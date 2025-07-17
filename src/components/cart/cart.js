@@ -7,7 +7,7 @@ import {
   getCartItems,
   subscribe,
 } from "./cartStore.js";
-import { getWordForm } from "./cartUtils.js";
+import { getWordForm } from "../utils/getWordForm";
 import { createCartModalHTML } from "./cartTemplate.js";
 
 export function createCart() {

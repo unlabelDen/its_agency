@@ -1,4 +1,3 @@
-// cartTemplate.js
 export function createCartModalHTML() {
   return `
     <div class="cart-modal__overlay"></div>

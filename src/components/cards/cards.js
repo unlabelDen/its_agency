@@ -5,7 +5,7 @@ import { ProductSorter } from "./productSorter";
 import { ProductRenderer } from "./productRenderer";
 import { ProductFilter } from "./productFilter";
 import { cardsTemplate } from "./cardsTemplate";
-import { getWordForm } from "../cart/cartUtils";
+import { getWordForm } from "../utils/getWordForm";
 
 export async function createCards() {
   const cards = document.createElement("section");
